@@ -57,7 +57,9 @@ public class PriceUpdateScheduler {
         logger.info("Price update scheduler initialized with {} threads", maxThreads);
     }
 
-
+    /**
+     * Periodically updates the prices of all assets.
+     */
     @Scheduled(fixedRateString = "${crypto.update.rate:60000}")
     public void updatePrices() {
         logger.info("Starting scheduled price update");
@@ -98,8 +100,8 @@ public class PriceUpdateScheduler {
     }
 
     /**
-     *
-     * @param symbol
+     * Updates the price of a single token.
+     * @param symbol The token symbol
      */
     private void updateSingleToken(String symbol) {
         logger.info("Updating price for: {}", symbol);

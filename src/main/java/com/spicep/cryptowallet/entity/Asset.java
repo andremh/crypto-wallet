@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- *
+ * Class that represents an asset in the cryptocurrency wallet.
  */
 @Data
 @Entity

@@ -41,8 +41,8 @@ class WalletControllerTest {
 
     @Test
     void shouldCreateWallet() throws Exception {
-        CreateWalletRequest request = new CreateWalletRequest("test@example.com");
-        CreateWalletResponse response = new CreateWalletResponse(1L, "test@example.com");
+        CreateWalletRequest request = new CreateWalletRequest("test@spicep.com");
+        CreateWalletResponse response = new CreateWalletResponse(1L, "test@spicep.com");
         Wallet mockedWallet = new Wallet();
         mockedWallet.setId(1L);
 

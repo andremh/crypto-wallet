@@ -49,7 +49,7 @@ class WalletServiceTest {
      */
     @Test
     void shouldCreateWalletForNewUser() {
-        String email = "new@test.com";
+        String email = "new@spicep.com";
         User newUser = new User();
         newUser.setEmail(email);
 
@@ -67,7 +67,7 @@ class WalletServiceTest {
 
     @Test
     void shouldCreateWalletForExistingUserWithoutWallet() {
-        String email = "existing@test.com";
+        String email = "existing@spicep.com";
         User existingUser = new User();
         existingUser.setEmail(email);
 
@@ -83,7 +83,7 @@ class WalletServiceTest {
 
     @Test
     void shouldThrowExceptionWhenUserAlreadyHasWallet() {
-        String email = "alreadyHasWallet@test.com";
+        String email = "alreadyHasWallet@spicep.com";
         User existingUser = new User();
         existingUser.setEmail(email);
         existingUser.setWallet(new Wallet());
@@ -96,6 +96,7 @@ class WalletServiceTest {
     /**
      * Asset management
      */
+
     @Test
     void shouldAddNewAssetToWallet() {
         Long walletId = 1L;
@@ -166,7 +167,7 @@ class WalletServiceTest {
     @Test
     void shouldThrowExceptionWhenAssetNotFound() {
         Long walletId = 1L;
-        String symbol = "INVALID";
+        String symbol = "AMHCOIN";
         BigDecimal quantity = new BigDecimal("0.5");
         Wallet wallet = new Wallet();
         wallet.setId(walletId);
@@ -181,6 +182,7 @@ class WalletServiceTest {
     /**
      * Wallet evaluation
      */
+
     @Test
     void shouldReturnWalletInformation() {
         Long walletId = 1L;

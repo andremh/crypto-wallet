@@ -6,6 +6,9 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing a wallet that holds multiple assets for a user.
+ */
 @Data
 @Entity
 @Table(name = "wallets")

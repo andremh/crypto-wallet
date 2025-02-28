@@ -69,6 +69,6 @@ class AssetRepositoryTest extends RepositoryTestBase {
         List<Asset> foundAssets = assetRepository.findBySymbol("ETH");
         
         assertFalse(foundAssets.isEmpty());
-        assertEquals("ETH", foundAssets.get(0).getSymbol());
+        assertEquals("ETH", foundAssets.getFirst().getSymbol());
     }
 }

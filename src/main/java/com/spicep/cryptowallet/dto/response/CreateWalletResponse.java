@@ -8,5 +8,4 @@ import lombok.Data;
 public class CreateWalletResponse {
     private Long id;
     private String email;
-
 }

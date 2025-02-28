@@ -60,7 +60,7 @@ public class ApiClientService {
         }
     }
 
-    //Constructor needed for tests
+    // Constructor needed for tests
     private ApiClientService(WebClient webClient) {
         this.webClient = webClient;
     }

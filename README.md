@@ -12,7 +12,7 @@ This is my implementation of the SPICE-P code challenge, creating a cryptocurren
 
 ## Tech Stack
 
-- Java 17
+- Java 21
 - Spring Boot 3.x
 - PostgreSQL (containerized with Docker)
 - Maven

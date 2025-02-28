@@ -2,6 +2,9 @@ package com.spicep.cryptowallet.exception;
 
 import lombok.Data;
 
+/**
+ * Class that represents the error response.
+ */
 @Data
 public class ErrorResponse {
     private int status;

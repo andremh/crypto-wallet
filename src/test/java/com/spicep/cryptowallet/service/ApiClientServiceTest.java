@@ -46,6 +46,8 @@ class ApiClientServiceTest {
     @InjectMocks
     private ApiClientService apiClientService;
 
+    private static final String DAY_1_INTERVAL = ApiClientService.CoinCapInterval.DAY_1.toString();
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -102,7 +104,6 @@ class ApiClientServiceTest {
 
         LocalDate testDate = LocalDate.now();
         String symbol = "bitcoin";
-        String interval = "d1";
 
         //webclient flow
         WebClient.RequestHeadersUriSpec requestHeadersUriSpec = mock(WebClient.RequestHeadersUriSpec.class);
@@ -113,20 +114,20 @@ class ApiClientServiceTest {
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(CoinCapAssetHistoryResponseDto.class)).thenReturn(Mono.just(responseDto));
 
-        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate(symbol, interval, testDate);
+        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate(symbol, DAY_1_INTERVAL, testDate);
 
         assertNotNull(history);
         assertFalse(history.isEmpty());
         assertEquals(1, history.size());
-        assertEquals(BigDecimal.TEN, history.get(0).getPriceUsd());
-        assertEquals(historyDto.getTime(), history.get(0).getTime());
+        assertEquals(BigDecimal.TEN, history.getFirst().getPriceUsd());
+        assertEquals(historyDto.getTime(), history.getFirst().getTime());
     }
 
     @Test
     void shouldHandleExceptionWhenGettingAssetPriceForDate() {
         when(responseSpec.bodyToMono(CoinCapAssetHistoryResponseDto.class)).thenThrow(WebClientResponseException.class);
 
-        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("bitcoin", "d1", LocalDate.now());
+        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("bitcoin", DAY_1_INTERVAL, LocalDate.now());
 
         assertNotNull(history);
         assertTrue(history.isEmpty());
@@ -137,7 +138,7 @@ class ApiClientServiceTest {
     void shouldHandleExceptionWhenGettingAssetPriceForNonexistentCoin() {
         when(responseSpec.bodyToMono(CoinCapAssetHistoryResponseDto.class)).thenThrow(WebClientResponseException.class);
 
-        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("MYCOIN", "d1", LocalDate.now());
+        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("MYCOIN", DAY_1_INTERVAL, LocalDate.now());
 
         assertNotNull(history);
         assertTrue(history.isEmpty());
@@ -150,7 +151,7 @@ class ApiClientServiceTest {
         when(responseSpec.bodyToMono(CoinCapAssetHistoryResponseDto.class))
                 .thenReturn(Mono.error(new WebClientResponseException(400, "Bad Request", null, null, null)));
 
-        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("bitcoin", "d1", futureDate);
+        List<CoinCapAssetHistoryDto> history = apiClientService.getAssetPriceForDate("bitcoin", DAY_1_INTERVAL, futureDate);
 
         assertNotNull(history);
         assertTrue(history.isEmpty());

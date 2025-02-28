@@ -13,5 +13,4 @@ public class AssetResponseDto {
     private BigDecimal quantity;
     private BigDecimal price;
     private BigDecimal value;
-    
 }

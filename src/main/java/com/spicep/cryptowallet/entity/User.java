@@ -3,6 +3,9 @@ package com.spicep.cryptowallet.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * Class that represents a user of the crypto wallet
+ */
 @Data
 @Entity
 @Table(name = "users")

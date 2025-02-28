@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+/**
+ * Global exception handler for the application.
+ */
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

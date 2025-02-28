@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
+/**
+ * Controller for managing wallet-related operations.
+ */
+
 @RestController
 @RequestMapping("/api/wallets")
 public class WalletController {

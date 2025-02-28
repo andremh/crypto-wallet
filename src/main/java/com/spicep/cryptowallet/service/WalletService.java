@@ -25,6 +25,9 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Service class for wallet operations.
+ */
 @Service
 public class WalletService {
 
@@ -111,7 +114,6 @@ public class WalletService {
         List<AssetInfoDto> assetInfoList = new ArrayList<>();
         BigDecimal totalValue = BigDecimal.ZERO;
 
-        //Total value calculation
         for (Asset asset : wallet.getAssets()) {
             BigDecimal value = asset.getValue();
             totalValue = totalValue.add(value);
@@ -181,7 +183,7 @@ public class WalletService {
             }
 
             //Get the most recent price for that day
-            CoinCapAssetHistoryDto priceData = historicalPrices.get(0);
+            CoinCapAssetHistoryDto priceData = historicalPrices.getFirst();
             BigDecimal priceOnDate = priceData.getPriceUsd();
             BigDecimal valueOnReferenceDate = quantity.multiply(priceOnDate);
 
